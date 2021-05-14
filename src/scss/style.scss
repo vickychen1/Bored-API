@@ -11,7 +11,7 @@ body {
   font-weight: 500;
 }
 body {
-  background-color: rgba(136, 228, 240, 0.774); //for testing 
+  background-color: rgba(136, 228, 240, 0.774); //for testing
   font-family: "Shadows Into Light", cursive, sans-serif;
 }
 
@@ -115,4 +115,11 @@ body {
 .test {
   color: black;
   font-size: 3rem;
+}
+
+.randomGen {
+  font-size: 5rem;
+  display: flex;
+  align: center;
+  justify-content: center;
 }

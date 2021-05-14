@@ -13,9 +13,12 @@ const query = async function () {
     );
     const data = await response.json();
     console.log(data);
+    activity.textContent = data.activity;
   } catch (error) {
     console.log(error);
     alert("something went wrong");
   }
 };
 query();
+
+const activity = document.getElementById("activity");
