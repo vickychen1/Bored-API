@@ -9,7 +9,7 @@ const key = "5808228";
 const query = async function () {
   try {
     const response = await fetch(
-      `http://www.boredapi.com/api/activity?type=recreational`
+      `https://www.boredapi.com/api/activity?type=recreational`
     );
     const data = await response.json();
     console.log(data);
