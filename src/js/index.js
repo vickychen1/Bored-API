@@ -1,129 +1,66 @@
-//import { DOMSelectors } from "./DOM";
-//import { activities } from "./activity";
-
-//const key = "YOURKEYHERE";
-
-const key = "5808228";
+import { DOMSelectors } from "./DOM";
 
 var data;
-//code goes here
-/*
-const query = async function () {
-  try {
-    const response = await fetch(`http://www.boredapi.com/api/activity/`);
-    const data = await response.json();
-    console.log(data);
-    activity.textContent = data.activity;
-  } catch (error) {
-    console.log(error);
-    alert("something went wrong");
-  }
-};
-query();
-*/
-/*
-const activity = document.getElementById("activity");
-const participants = document.getElementById("participants");
-const price = document.getElementById("price");
-const accessibility = document.getElementById("accessibility");
-*/
-/*
-const query = async function () {
-  try {
-    const response = await fetch(
-      `https://www.boredapi.com/api/activity?type=recreational`
-    );
-    const data = await response.json();
-    console.log(data);
-    activity.textContent = data.activity;
-  } catch (error) {
-    console.log(error);
-    alert("something went wrong");
-  }
-};
-query();
-*/
-import { DOMSelectors } from "./DOM";
-function getOption() {
-  option = type.options[type.selectedIndex].value;
-  console.log(option);
-}
+var option;
 
-submit.addEventListener("click", result);
+DOMSelectors.submit.addEventListener("click", result);
 function result() {
-  participantsInput = participants.value;
-  priceInput = price.value;
-  accessibilityInput = accessibility.value;
+  const participantsInput = DOMSelectors.participants.value;
+  const priceInput = DOMSelectors.price.value;
+  const accessibilityInput = DOMSelectors.accessibility.value;
 
-  console.log(participantsInput);
-  console.log(priceInput);
-  console.log(accessibilityInput);
-  //type.addEventListener("click", getOption);
+  function getOption() {
+    option = DOMSelectors.type.options[type.selectedIndex].value;
+  }
   getOption();
 
   const query = async function () {
     try {
-      const response = await fetch(`http://www.boredapi.com/api/activity/`);
-      //data = await response.json();
-      data = await response.json();
-      console.log(data);
-      console.log(data.type);
-    } catch (error) {
-      console.log(error);
-      alert("something went wrong");
-    }
-    /*
-    function isCherries() {
-      return data.type === option;
-    }
-    console.log(data.type);
-    //console.log(data.find(isCherries));
-*/
-
-    /*
-    function checkInput() {
-      console.log(data.type);
-      if (data.type === option) {
-        if (data.participants === participantsInput) {
-          if (data.price === priceInput) {
-            if (data.accessibility === accessibilityInput) {
-              activity.textContent = data.activity;
-            }
-          }
-        }
-      } else if (data.type !== option) {
-        if (data.participants !== participantsInput) {
-          if (data.price !== priceInput) {
-            if (data.accessibility !== accessibilityInput) {
-              query();
-            }
-          }
-        }
+      //adjusts for type: any
+      if (option === "any") {
+        var response = await fetch(
+          `https://www.boredapi.com/api/activity?participants=${participantsInput}&price=${priceInput}&accessibility=${accessibilityInput}`
+        );
       } else {
-        alert("Not found. Try again.");
+        var response = await fetch(
+          `https://www.boredapi.com/api/activity?type=${option}&participants=${participantsInput}&price=${priceInput}&accessibility=${accessibilityInput}`
+        );
       }
+      data = await response.json();
+
+      //user input is too high, out of range
+      function exceedValue() {
+        if (priceInput > 1) {
+          alert("Price must be from 0 to 1.");
+        } else {
+          return;
+        }
+        if (accessibilityInput > 1) {
+          alert("Accessiblity must be from 0 to 1.");
+        } else {
+          return;
+        }
+      }
+      exceedValue();
+
+      //if values inputted is not found in array
+      function na() {
+        if (data.type === undefined) {
+          if (priceInput <= 1) {
+            if (accessibilityInput <= 1) {
+              alert("Try another value");
+            }
+          }
+        } else {
+          activity.textContent = data.activity;
+        }
+      }
+      na();
+    } catch (err) {
+      console.log(err);
+      alert("Something went wrong.");
     }
-    checkInput();
-    */
+    console.log(data);
   };
   query();
-  function checkInput() {
-    console.log(data.type);
-    if (data.type === option) {
-      activity.textContent = data.activity;
-    } else {
-      query();
-    }
-  }
-  checkInput();
-  /*
-  function checkInput() {
-    if (data.type === option) {
-      activity.textContent = data.activity;
-    } else {
-      query();
-    }
-  }
-  checkInput();
-*/
 }
