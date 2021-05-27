@@ -43,6 +43,7 @@ const query = async function () {
 };
 query();
 */
+import { DOMSelectors } from "./DOM";
 function getOption() {
   option = type.options[type.selectedIndex].value;
   console.log(option);
@@ -63,36 +64,55 @@ function result() {
   const query = async function () {
     try {
       const response = await fetch(`http://www.boredapi.com/api/activity/`);
+      //data = await response.json();
       data = await response.json();
       console.log(data);
       console.log(data.type);
-      //activity.textContent = data.activity;
     } catch (error) {
       console.log(error);
       alert("something went wrong");
     }
+    /*
+    function isCherries() {
+      return data.type === option;
+    }
+    console.log(data.type);
+    //console.log(data.find(isCherries));
+*/
+
+    /*
+    function checkInput() {
+      console.log(data.type);
+      if (data.type === option) {
+        if (data.participants === participantsInput) {
+          if (data.price === priceInput) {
+            if (data.accessibility === accessibilityInput) {
+              activity.textContent = data.activity;
+            }
+          }
+        }
+      } else if (data.type !== option) {
+        if (data.participants !== participantsInput) {
+          if (data.price !== priceInput) {
+            if (data.accessibility !== accessibilityInput) {
+              query();
+            }
+          }
+        }
+      } else {
+        alert("Not found. Try again.");
+      }
+    }
+    checkInput();
+    */
   };
   query();
-
   function checkInput() {
+    console.log(data.type);
     if (data.type === option) {
-      if (data.participants === participantsInput) {
-        if (data.price === priceInput) {
-          if (data.accessibility === accessibilityInput) {
-            activity.textContent = data.activity;
-          }
-        }
-      }
-    } else if (data.type !== option) {
-      if (data.participants !== participantsInput) {
-        if (data.price !== priceInput) {
-          if (data.accessibility !== accessibilityInput) {
-            query();
-          }
-        }
-      }
+      activity.textContent = data.activity;
     } else {
-      alert("Not found. Try again.");
+      query();
     }
   }
   checkInput();
