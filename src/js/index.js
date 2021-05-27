@@ -28,29 +28,34 @@ function result() {
       }
       data = await response.json();
 
-      //user input is too high, out of range
-      function exceedValue() {
+      //user input fo price is too high, out of range
+      function priceExceed() {
         if (priceInput > 1) {
           alert("Price must be from 0 to 1.");
         } else {
           return;
         }
+      }
+      //user input of accessibility is too high
+      function accessibilityExceed() {
         if (accessibilityInput > 1) {
           alert("Accessiblity must be from 0 to 1.");
         } else {
           return;
         }
       }
-      exceedValue();
+      priceExceed();
+      accessibilityExceed();
 
       //if values inputted is not found in array
       function na() {
-        if (data.type === undefined) {
-          if (priceInput <= 1) {
-            if (accessibilityInput <= 1) {
-              alert("Try another value");
-            }
-          }
+        if (
+          (data.type === undefined) &
+          (priceInput <= 1) &
+          (accessibilityInput <= 1)
+        ) {
+          alert("Try another value");
+          activity.textContent = "Activity";
         } else {
           activity.textContent = data.activity;
         }
