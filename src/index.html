@@ -2,46 +2,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Asap:wght@400;600&family=Josefin+Slab:ital,wght@0,300;0,400;1,300&display=swap"
-      rel="stylesheet"
-    />
+    <title>Bored??</title>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;600&family=Josefin+Slab:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="scss/style.scss" />
   </head>
   <body>
-    <h1 class="header">SITHS Movie Database</h1>
-    <h2 class="top-rated">Our Top Rated Movies</h2>
-    <section class="movie-grid">
-      <!--  <div class="movie-card">
-        <div class="movie-card-front">
-          <img
-            src="https://image.tmdb.org/t/p/w300/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg"
-            alt=""
-            class="poster"
-          />
-        </div>
-        <div class="movie-card-back">
-          <h3 class="movie-card-header">The Dark Knight</h3>
-          <div class="score-box">
-            <p class="user-score">Community Score</p>
-            <p class="user-score">8.4</p>
-          </div>
-
-          <div class="release-box">
-            <p class="release-date">Released</p>
-            <p class="release-date">2020-06-12</p>
-          </div>
-
-          <div class="movie-genres">
-            <li class="movie-genre">Sci-Fi</li>
-            <li class="movie-genre">Fantasy</li>
-            <li class="movie-genre">Horror</li>
-          </div>
-        </div>
-      </div> -->
+    <h1 class="header">Bored Out Of Your Mind???</h1>
+    <h2 class="manual">
+      <p>Generate an activity !</p>
+      <p>Note that price and accessiblity is [0 , 1] .</p>
+      <p>Fields can be left empty.</p>
+    </h2>
+    <section class="form">
+      <ul>
+        <li>
+          <label for="type">Type:</label>
+          <select id="type">
+            <option value="education">education</option>
+            <option value="recreational">recreational</option>
+            <option value="social">social</option>
+            <option value="diy">diy</option>
+            <option value="charity">charity</option>
+            <option value="cooking">cooking</option>
+            <option value="relaxation">relaxation</option>
+            <option value="music">music</option>
+            <option value="busywork">busywork</option>
+            <option value="any">any</option>
+          </select>
+        </li>
+        <li>
+          <label for="participants">Participants:</label>
+          <input type="number" id="participants" name="participants" min="0">
+        </li>
+        <li>
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" min="0" max="1" step="0.01">
+        </li>
+        <li>
+          <label for="accessibility">Accessibility:</label>
+          <input type="number" id="accessibility" name="accessibility" min="0" max="1" step="0.01">
+        </li>
+      </ul>
+      <input id="submit" type="submit" value="submit">
     </section>
-
+    <section class="randomGen">
+      <div class="randomGenActivity">
+        <p id="activity">Activity</p>
+      </div>
+    </section>
     <script src="js/index.js"></script>
   </body>
 </html>

@@ -11,11 +11,12 @@ body {
   font-weight: 500;
 }
 body {
-  background-color: #111;
+  background-color: rgba(77, 204, 221, 0.774); //for testing
+  font-family: "Shadows Into Light", cursive, sans-serif;
 }
-
+//background-color: rgba(136, 228, 240, 0.774)
 .header {
-  font-size: 5.2rem;
+  font-size: 4rem;
 
   margin: 3rem auto;
   text-align: center;
@@ -114,4 +115,75 @@ body {
 .test {
   color: black;
   font-size: 3rem;
+}
+
+.form {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 10rem;
+  padding: 1rem;
+}
+
+.form ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+}
+
+.form ul li {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+input,
+select {
+  height: 3.5rem;
+  font-size: 2rem;
+}
+
+.randomGen {
+  font-size: 5rem;
+  text-align: center;
+}
+#activity {
+  display: inline-block;
+  padding: 2rem;
+  margin: 1.5rem;
+  background-color: #e4f2ff;
+  border: 3px solid #3e86c8;
+  color: #3e86c8;
+}
+
+.manual {
+  margin: 0rem auto;
+  font-size: 2.4rem;
+  width: 70rem;
+  padding: 1%;
+  letter-spacing: 3;
+  border: 0.8rem solid rgba(125, 175, 250, 0.3);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.manual p {
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .form ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+  .form {
+    margin-bottom: 5rem;
+  }
+  #activity {
+    margin-bottom: 4rem;
+  }
+  .manual {
+    width: 75vw;
+  }
 }

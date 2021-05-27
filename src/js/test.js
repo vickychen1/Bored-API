@@ -42,7 +42,6 @@ function result() {
         }
       }
       exceedValue();
-
       //if values inputted is not found in array
       function na() {
         if (data.type === undefined) {
