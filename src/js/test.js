@@ -16,6 +16,7 @@ function result() {
 
   const query = async function () {
     try {
+      //adjusts for type: any
       if (option === "any") {
         var response = await fetch(
           `https://www.boredapi.com/api/activity?participants=${participantsInput}&price=${priceInput}&accessibility=${accessibilityInput}`
@@ -27,9 +28,28 @@ function result() {
       }
       data = await response.json();
 
+      //user input is too high, out of range
+      function exceedValue() {
+        if (priceInput > 1) {
+          alert("Price must be from 0 to 1.");
+        } else {
+          return;
+        }
+        if (accessibilityInput > 1) {
+          alert("Accessiblity must be from 0 to 1.");
+        } else {
+          return;
+        }
+      }
+      exceedValue();
+      //if values inputted is not found in array
       function na() {
         if (data.type === undefined) {
-          alert("Try another value");
+          if (priceInput <= 1) {
+            if (accessibilityInput <= 1) {
+              alert("Try another value");
+            }
+          }
         } else {
           activity.textContent = data.activity;
         }
@@ -39,6 +59,7 @@ function result() {
       console.log(err);
       alert("Something went wrong.");
     }
+    console.log(data);
   };
   query();
 }

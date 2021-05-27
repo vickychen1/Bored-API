@@ -155,6 +155,22 @@ select {
   color: #3e86c8;
 }
 
+.manual {
+  margin: 0rem auto;
+  font-size: 2.4rem;
+  width: 70rem;
+  padding: 1%;
+  letter-spacing: 3;
+  border: 0.8rem solid rgba(125, 175, 250, 0.3);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.manual p {
+  text-align: center;
+}
+
 @media screen and (max-width: 900px) {
   .form ul {
     display: flex;
@@ -166,5 +182,8 @@ select {
   }
   #activity {
     margin-bottom: 4rem;
+  }
+  .manual {
+    width: 75vw;
   }
 }
