@@ -1,7 +1,5 @@
 import { DOMSelectors } from "./DOM";
 
-//import { activities } from "./activity";
-
 var data;
 var option;
 
@@ -13,15 +11,12 @@ function result() {
 
   function getOption() {
     option = DOMSelectors.type.options[type.selectedIndex].value;
-    console.log(option);
   }
   getOption();
-  // http://www.boredapi.com/api/activity?type=recreational&participants=1&price=0.3&accessibility=0.3
 
   const query = async function () {
     try {
-      if ((option = "any")) {
-        console.log("any");
+      if (option === "any") {
         var response = await fetch(
           `https://www.boredapi.com/api/activity?participants=${participantsInput}&price=${priceInput}&accessibility=${accessibilityInput}`
         );
@@ -45,6 +40,5 @@ function result() {
       alert("Something went wrong.");
     }
   };
-
   query();
 }
