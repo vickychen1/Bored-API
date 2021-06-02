@@ -3,6 +3,19 @@ import { DOMSelectors } from "./DOM";
 var data;
 var option;
 
+const first = async function () {
+  try {
+    const response = await fetch(`https://www.boredapi.com/api/activity`);
+    const data = await response.json();
+    console.log(data);
+    activity.textContent = data.activity;
+  } catch (error) {
+    console.log(error);
+    alert("something went wrong");
+  }
+};
+first();
+
 DOMSelectors.submit.addEventListener("click", result);
 function result() {
   const participantsInput = DOMSelectors.participants.value;
