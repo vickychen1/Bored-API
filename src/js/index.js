@@ -3,6 +3,7 @@ import { DOMSelectors } from "./DOM";
 var data;
 var option;
 
+//when first opened
 const first = async function () {
   try {
     const response = await fetch(`https://www.boredapi.com/api/activity`);
