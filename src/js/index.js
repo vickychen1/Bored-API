@@ -42,7 +42,7 @@ function result() {
       }
       data = await response.json();
 
-      //user input fo price is too high, out of range
+      //user input for price is too high, out of range
       function priceExceed() {
         if (priceInput > 1) {
           alert("Price must be from 0 to 1.");
@@ -69,7 +69,6 @@ function result() {
           (accessibilityInput <= 1)
         ) {
           alert("Try another value");
-          activity.textContent = "Activity";
         } else {
           activity.textContent = data.activity;
         }
