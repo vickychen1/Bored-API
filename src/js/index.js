@@ -3,6 +3,20 @@ import { DOMSelectors } from "./DOM";
 var data;
 var option;
 
+//when first opened
+const first = async function () {
+  try {
+    const response = await fetch(`https://www.boredapi.com/api/activity`);
+    const data = await response.json();
+    console.log(data);
+    activity.textContent = data.activity;
+  } catch (error) {
+    console.log(error);
+    alert("something went wrong");
+  }
+};
+first();
+
 DOMSelectors.submit.addEventListener("click", result);
 function result() {
   const participantsInput = DOMSelectors.participants.value;
@@ -28,29 +42,33 @@ function result() {
       }
       data = await response.json();
 
-      //user input is too high, out of range
-      function exceedValue() {
+      //user input for price is too high, out of range
+      function priceExceed() {
         if (priceInput > 1) {
           alert("Price must be from 0 to 1.");
         } else {
           return;
         }
+      }
+      //user input of accessibility is too high
+      function accessibilityExceed() {
         if (accessibilityInput > 1) {
           alert("Accessiblity must be from 0 to 1.");
         } else {
           return;
         }
       }
-      exceedValue();
+      priceExceed();
+      accessibilityExceed();
 
       //if values inputted is not found in array
       function na() {
-        if (data.type === undefined) {
-          if (priceInput <= 1) {
-            if (accessibilityInput <= 1) {
-              alert("Try another value");
-            }
-          }
+        if (
+          (data.type === undefined) &
+          (priceInput <= 1) &
+          (accessibilityInput <= 1)
+        ) {
+          alert("Try another value");
         } else {
           activity.textContent = data.activity;
         }
